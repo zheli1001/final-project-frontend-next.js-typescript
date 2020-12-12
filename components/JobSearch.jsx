@@ -9,7 +9,7 @@ var des;
 var loc;
 var curPage;
 const BASE_URL =
-  'https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?';
+  'https://ancient-chamber-73045.herokuapp.com/https://jobs.github.com/positions.json?';
 // const BASE_URL = 'http://localhost:8010/proxy/';
 var real = 'jobs.github.com/positions.json';
 var url = BASE_URL;
