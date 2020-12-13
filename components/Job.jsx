@@ -11,7 +11,7 @@ export default function Job({ job }) {
     var ref = "https://jobs.github.com/positions/" + id;
 
     return (
-        <Card className="mb-3">
+        <Card className="mb-3" style={{ width: '70rem', margin: 'auto' }}>
       <Card.Body>
         <div className="d-flex justify-content-between">
           <div>

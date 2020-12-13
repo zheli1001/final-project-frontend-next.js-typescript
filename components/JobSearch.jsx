@@ -9,10 +9,11 @@ var des;
 var loc;
 var curPage;
 const BASE_URL =
-  'https://ancient-chamber-73045.herokuapp.com/https://jobs.github.com/positions.json?';
+'https://ancient-chamber-73045.herokuapp.com/https://jobs.github.com/positions.json?';
 // const BASE_URL = 'http://localhost:8010/proxy/';
 var real = 'jobs.github.com/positions.json';
 var url = BASE_URL;
+var length = 0;
 //positions?description=python&location=new+york
 class JobSearch extends React.Component {
   constructor() {
@@ -139,23 +140,22 @@ class JobSearch extends React.Component {
 
     Axios.get(url).then(response => {
       this.setState({ jobs: response.data });
-      // console.log(response.data);
+      
     });
   }
 
   render() {
     console.log('Again');
+    length = 0;
+    length = this.state.jobs.length;
     return (
       <div>
         {/* <div className={styles.container}> */}
         <div className={styles.landing}>
-          <div className={styles.darkoverlay}>
-            <form className='mb-4'>
+          <div className={styles.darkoverlay} style = {{marginTop: '100px'}}>
+            <Form className='mb-4' style = {{margin:'auto', width: '80%'}}>
               <Form.Row className='align-items'>
                 <Col sm={5} className='my-1'>
-                  <Form.Label style={{ marginLeft: '15px' }}>
-                    Description
-                  </Form.Label>
                   <Form.Control
                     style={{ marginLeft: '15px' }}
                     placeholder='description'
@@ -165,11 +165,9 @@ class JobSearch extends React.Component {
                   />
                 </Col>
                 <Col sm={5} className='my-1'>
-                  <Form.Label style={{ marginLeft: '15px' }}>
-                    Location
-                  </Form.Label>
                   <Form.Control
                     style={{ marginLeft: '15px' }}
+                    placeholder='location'
                     onChange={this.myChangeHandlerforloc}
                     name='location'
                     type='text'
@@ -184,24 +182,45 @@ class JobSearch extends React.Component {
                   Search
                 </button>
               </Form.Row>
-            </form>
-            <Pagination>
+            </Form>
+            
+            <Pagination style = {{margin:'auto', width: '80%'}}>
+            {this.state.page > 2 && <Pagination.First>1</Pagination.First>}
+              {/* <Pagination.Item>{1}</Pagination.Item> */}
               {this.state.page > 1 && (
                 <Pagination.Prev onClick={this.clickPageMinus}>
                   {this.state.page - 1}
                 </Pagination.Prev>
               )}
+              
               <Pagination.Item active>{this.state.page}</Pagination.Item>
-              {this.state.hasNextPage && (
+              {length == 50 && this.state.hasNextPage &&  (
                 <Pagination.Next onClick={this.clickPagePlus}>
                   {this.state.page + 1}
                 </Pagination.Next>
               )}
             </Pagination>
+            <br></br>
             {this.state.jobs.map(job => {
               return <Job key={job.id} job={job} />;
             })}
-            <Pagination></Pagination>
+            <br></br>
+            <Pagination style = {{margin:'auto', width: '80%'}}>
+            {this.state.page > 2 && <Pagination.First>1</Pagination.First>}
+              {/* <Pagination.Item>{1}</Pagination.Item> */}
+              {this.state.page > 1 && (
+                <Pagination.Prev onClick={this.clickPageMinus}>
+                  {this.state.page - 1}
+                </Pagination.Prev>
+              )}
+              
+              <Pagination.Item active>{this.state.page}</Pagination.Item>
+              {length == 50 && this.state.hasNextPage &&  (
+                <Pagination.Next onClick={this.clickPagePlus}>
+                  {this.state.page + 1}
+                </Pagination.Next>
+              )}
+            </Pagination>
           </div>
         </div>
       </div>
