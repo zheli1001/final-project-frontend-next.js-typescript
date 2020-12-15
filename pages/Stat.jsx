@@ -97,6 +97,7 @@ class Stat extends React.Component {
       //   </MDBContainer>
       <div>
         <div className='d-flex justify-content-center'>
+          <h3>You have voted</h3>
           <table className='table table-sm'>
             <thead className='thead-dark'>
               <tr>

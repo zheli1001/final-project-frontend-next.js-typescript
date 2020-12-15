@@ -53,24 +53,27 @@ const Navbar = () => {
               <a>All Jobs</a>
             </Link>
           </li>
-
           {user.email && (
             <>
               {(user.isEmployer && (
                 <li>
-                  <Link href='/EmpRankings'>NEW RANKING</Link>
+                  <Link href='/EmpRankings'>Ranking</Link>
                 </li>
               )) || (
                 <li>
-                  <Link href='/Rankings'>NEW RANKING</Link>
+                  <Link href='/Rankings'>Ranking</Link>
                 </li>
               )}
             </>
           )}
-
+          || (
           <li>
-            <Link href='/Rankings'>Rankings</Link>
+            <Link href='/AnonyRankings'>Ranking</Link>
           </li>
+          )
+          {/* <li>
+            <Link href='/Rankings'>Rankings</Link>
+          </li> */}
           <li>
             <Link href='/Register'>Register</Link>
           </li>
