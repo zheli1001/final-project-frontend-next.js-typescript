@@ -5,9 +5,9 @@ import styles from '../components/Register.module.css';
 import Navbar from '../components/Navbar';
 import Axios from 'axios';
 
-const HOST = 'http://localhost:5000/api/rank';
+const HOST = 'http://localhost:5000/api/rankByRecruiter';
 
-const Rankings = () => {
+const EmpRankings = () => {
   function onclick(com: String) {
     Axios.put(
       HOST,
@@ -25,29 +25,6 @@ const Rankings = () => {
         console.log(err.response);
       });
     window.location.href = '/Stat';
-
-    // let requestHeaders: any = {
-    //   'Content-Type': 'application/json',
-    //   'x-auth-token': window.localStorage.getItem('token')
-    // };
-
-    // var data: any = {
-    //   company: com
-    // };
-    // fetch(HOST, {
-    //   mode: 'cors',
-    //   method: 'PUT',
-    //   headers: requestHeaders,
-    //   body: data
-    // })
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     console.log('res ->> ', res);
-    //     if (res.msg) {
-    //       alert(res.msg);
-    //     }
-    //     Router.push('/Stat');
-    //   });
   }
   return (
     <div>
@@ -342,4 +319,4 @@ const Rankings = () => {
   );
 };
 
-export default Rankings;
+export default EmpRankings;

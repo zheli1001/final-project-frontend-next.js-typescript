@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import Router from "next/router";
-import styles from "./Navbar.module.css";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Router from 'next/router';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const [user, setuser] = useState<any>({});
   if (typeof window !== 'undefined') {
-    console.log('we are running on the client')
-} else {
+    console.log('we are running on the client');
+  } else {
     console.log('we are running on the server');
-}
+  }
 
   useEffect(() => {
     getUser();
   }, []);
 
   function getUser() {
-    var user = localStorage.getItem("user");
+    var user = localStorage.getItem('user');
     if (user) {
       setuser(JSON.parse(user));
     }
@@ -24,15 +24,15 @@ const Navbar = () => {
 
   function logout() {
     localStorage.clear();
-    Router.push("/LandingPage");
+    Router.push('/LandingPage');
   }
 
   function topage() {
-    console.log("user ->> ", user);
+    console.log('user ->> ', user);
     if (user.isEmployer) {
-      Router.push("/EmpProfileInfo");
+      Router.push('/EmpProfileInfo');
     } else {
-      Router.push("/UserProfileInfo");
+      Router.push('/UserProfileInfo');
     }
   }
 
@@ -44,33 +44,47 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         <ul>
           <li>
-            <Link href="/LandingPage">
+            <Link href='/LandingPage'>
               <a>Main Page</a>
             </Link>
           </li>
           <li>
-            <Link href="/AllJobs">
+            <Link href='/AllJobs'>
               <a>All Jobs</a>
             </Link>
           </li>
 
+          {user.email && (
+            <>
+              {(user.isEmployer && (
+                <li>
+                  <Link href='/EmpRankings'>NEW RANKING</Link>
+                </li>
+              )) || (
+                <li>
+                  <Link href='/Rankings'>NEW RANKING</Link>
+                </li>
+              )}
+            </>
+          )}
+
           <li>
-            <Link href="/Rankings">Rankings</Link>
+            <Link href='/Rankings'>Rankings</Link>
           </li>
           <li>
-            <Link href="/Register">Register</Link>
+            <Link href='/Register'>Register</Link>
           </li>
           <li>
-            <Link href="/Login">Login</Link>
+            <Link href='/Login'>Login</Link>
           </li>
           {user.email && (
             <>
               <li>
-                <Link href="/JobList">JobList</Link>
+                <Link href='/JobList'>JobList</Link>
               </li>
               {user.isEmployer && (
                 <li>
-                  <Link href="/PostJob">PostJob</Link>
+                  <Link href='/PostJob'>PostJob</Link>
                 </li>
               )}
               <li onClick={topage}>
