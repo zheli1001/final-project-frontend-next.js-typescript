@@ -3,14 +3,37 @@ import Image from 'next/image';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from '../components/Register.module.css';
 import Navbar from '../components/Navbar';
+import Axios from 'axios';
+
+const HOST = 'http://localhost:5000/api/rank';
 
 const Rankings = () => {
+  function onclick(com: String){
+    
+      Axios.put(HOST, {
+        company: com,
+      }) .then(function () {
+        Axios.get(HOST)
+      })
+      .catch(err => {
+        console.log(err.response);
+      })
+      window.location.href="/Stat"
+      
+
+      
+    
+  }
   return (
     <div>
       <Navbar />
+      
       <div className={styles.landing}>
         <div className={styles.darkoverlay}>
           <div className={styles.landinginner}>
+          <h1>Which one will be the next Tech giant?</h1>
+          <br></br>
+          <br></br>
             <div className='container'>
               <div className='row'>
                 <div className='col-md-6'>
@@ -27,7 +50,16 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Better.com</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Better.com')}
+                          style = {{marginBottom: '10px'}}
+                          
+                          >
+                          Better.com
+                          </button>
+                          </div>
                       Financial services
                     </div>
                   </div>
@@ -46,7 +78,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>DoorDash</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('DoorDash')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                         DoorDash
+                          </button>
+                          </div>
                       Internet
                     </div>
                   </div>
@@ -65,7 +105,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Robinhood</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Robinhood')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Robinhood
+                          </button>
+                          </div>
                       Financial services
                     </div>
                   </div>
@@ -84,7 +132,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Samsara</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Samsara')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Samsara
+                          </button>
+                          </div>
                       Computer software
                     </div>
                   </div>
@@ -103,7 +159,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Databricks</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Databricks')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Databricks
+                          </button>
+                          </div>
                       Computer software
                     </div>
                   </div>
@@ -122,11 +186,22 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Outreach</h4>
-                      Computer software
+                      <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Outreach')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Outreach
+                          </button>
+                          </div>
+                        
+                        Computer software
                     </div>
                   </div>
                 </div>
+                <br></br>
+                <br></br>
                 <div className='col-md-6'>
                   <div className='media'>
                     <div className='media-left'>
@@ -141,7 +216,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Brooklinen</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Brooklinen')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Brooklinen
+                          </button>
+                          </div>
                       Retail
                     </div>
                   </div>
@@ -160,7 +243,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Attentive</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Attentive')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Attentive
+                          </button>
+                          </div>
                       Marketing and advertising
                     </div>
                   </div>
@@ -179,7 +270,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Loom</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Loom')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Loom
+                          </button>
+                          </div>
                       Information technology and services
                     </div>
                   </div>
@@ -198,7 +297,15 @@ const Rankings = () => {
                       </a>
                     </div>
                     <div className='media-body'>
-                      <h4 className='media-heading'>Verkada</h4>
+                    <div>
+                        <button 
+                          className='btn btn-secondary'
+                          onClick = {() => onclick('Verkada')}
+                          style = {{marginBottom: '10px'}}
+                          >
+                          Verkada
+                          </button>
+                          </div>
                       Computer software
                     </div>
                   </div>

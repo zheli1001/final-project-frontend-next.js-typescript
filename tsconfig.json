@@ -19,5 +19,5 @@
     "target": "esnext"
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "pages/AllJobs.jsx", "components/Job.jsx", "components/JobSearch.jsx"]
+  "include": ["**/*.ts", "**/*.tsx", "pages/AllJobs.jsx", "components/Job.jsx", "components/JobSearch.jsx", "pages/PostJob.jsx", "pages/Rankings.jsx"]
 }

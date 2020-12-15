@@ -71,6 +71,38 @@ class JobSearch extends React.Component {
     }
   };
 
+  clicktoOne = () => {
+    url = BASE_URL;
+    if (this.state.page > 1) {
+      var curpage = this.state.page - 1;
+      this.setState({ page: curpage });
+      if (loc != null) {
+        this.setState({
+          location: loc,
+          page: 1
+        });
+        url += '&location=' + this.state.location;
+      }
+      console.log(des);
+      if (des != null) {
+        // console.log(des);
+        this.setState({
+          description: des,
+          page: 1
+        });
+        url += '&description=' + this.state.description;
+      }
+      url += '&page=' + 1;
+      console.log(url);
+      Axios.get(url).then(response => {
+        this.setState({ jobs: response.data });
+        this.setState({ hasNextPage: true });
+        // console.log(response.data);
+      });
+    }
+
+  }
+
   clickPageMinus = () => {
     url = BASE_URL;
     if (this.state.page > 1) {
@@ -83,6 +115,7 @@ class JobSearch extends React.Component {
         });
         url += '&location=' + this.state.location;
       }
+      console.log(des);
       if (des != null) {
         // console.log(des);
         this.setState({
@@ -90,7 +123,7 @@ class JobSearch extends React.Component {
           page: 1
         });
         url += '&description=' + this.state.description;
-        // console.log(this.state.description);
+         console.log("HHHHHHH");
       }
       url += '&page=' + curpage;
       console.log(url);
@@ -183,9 +216,9 @@ class JobSearch extends React.Component {
                 </button>
               </Form.Row>
             </Form>
-            
-            <Pagination style = {{margin:'auto', width: '80%'}}>
-            {this.state.page > 2 && <Pagination.First>1</Pagination.First>}
+            {/* {length == 0 && (this.state.page > 1  || (des == null && loc == null)) && <h1 style = {{color: 'white', margin:'auto', width: '50%'}}>No Results Found</h1>} */}
+            {length > 0 && <Pagination style = {{margin:'auto', width: '80%'}}>
+            {this.state.page > 2 && <Pagination.First onClick = {this.clicktoOne()}>1</Pagination.First>}
               {/* <Pagination.Item>{1}</Pagination.Item> */}
               {this.state.page > 1 && (
                 <Pagination.Prev onClick={this.clickPageMinus}>
@@ -199,13 +232,13 @@ class JobSearch extends React.Component {
                   {this.state.page + 1}
                 </Pagination.Next>
               )}
-            </Pagination>
+            </Pagination>}
             <br></br>
             {this.state.jobs.map(job => {
               return <Job key={job.id} job={job} />;
             })}
             <br></br>
-            <Pagination style = {{margin:'auto', width: '80%'}}>
+            {length > 0 && <Pagination style = {{margin:'auto', width: '80%'}}>
             {this.state.page > 2 && <Pagination.First>1</Pagination.First>}
               {/* <Pagination.Item>{1}</Pagination.Item> */}
               {this.state.page > 1 && (
@@ -220,7 +253,7 @@ class JobSearch extends React.Component {
                   {this.state.page + 1}
                 </Pagination.Next>
               )}
-            </Pagination>
+            </Pagination>}
           </div>
         </div>
       </div>

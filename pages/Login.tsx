@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../components/Register.module.css';
 import Navbar from '../components/Navbar';
+import Link from 'next/link';
 
 // Reference : https://cssdeck.com/labs/sleek-sign-up
 
@@ -14,6 +15,14 @@ const Register  = () => {
           <div className={styles.landinginner}>
             <div className={styles.container}>
               <form className={styles.signup}>
+              <Link href='/LandingPage'>
+              <button type="button" className="close" aria-label="Close" style = {{marginTop: '20px', float: 'right'}} >
+              
+              <span aria-hidden="true">&times;</span>
+              </button>
+              
+              </Link>
+              
                 <div className={styles.header}>
                   <h3>Log In</h3>
                 </div>
@@ -33,6 +42,7 @@ const Register  = () => {
                   <a className={styles.submit} href='#'>
                     Log In
                   </a>
+                  
                 </div>
               </form>
             </div>

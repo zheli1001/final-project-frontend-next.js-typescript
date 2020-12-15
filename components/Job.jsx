@@ -16,7 +16,8 @@ export default function Job({ job }) {
         <div className="d-flex justify-content-between">
           <div>
             <Card.Title>
-            <a  href={ref}>{job.title}</a>
+            <a  style={{display: "table-cell"}} target = "_blank" 
+rel = 'noopener noreferrer' href={ref}>{job.title}</a>
             </Card.Title>
             <Card.Subtitle>
               {new Date(job.created_at).toLocaleDateString()}
