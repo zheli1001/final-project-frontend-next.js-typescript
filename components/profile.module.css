@@ -1,0 +1,19 @@
+.bg {
+    position: relative;
+    background: #737b8d;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .bg-card {
+    background: #fff;
+    color: #333;
+    height: 100%;
+    width: 80%;
+    margin: 100px auto 0;
+    padding: 16px;
+  }
+  
+  .tables-job{
+    width: 100%;
+    text-align: center;
+  }
